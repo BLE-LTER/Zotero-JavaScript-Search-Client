@@ -166,11 +166,12 @@ function searchZotero(query, publicGroupId, start=0) {
 window.onload = function() {
     var query = getParameterByName("q");
     var start = getParameterByName("start");
-    if (query != "" && query != null) {
-        document.forms.zoteroSearchForm.q.value = query;
-        if (!start) {
-            start = 0;
-        }
-        searchZotero(query, ZOTERO_CONFIG["publicGroupId"], start);
+    if (query == null) {
+        query = "";
     }
+    document.forms.zoteroSearchForm.q.value = query;
+    if (!start) {
+        start = 0;
+    }
+    searchZotero(query, ZOTERO_CONFIG["publicGroupId"], start);
 };
