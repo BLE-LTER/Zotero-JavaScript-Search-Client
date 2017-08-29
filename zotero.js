@@ -4,9 +4,10 @@
 
 var ZOTERO_CONFIG = {
     "publicGroupId": "1586722",  // ID of public group to search in Zotero
-    "limit": 15,  // Max number of results to retrieve per page
+    "limit": 10,  // Max number of results to retrieve per page
     "resultsElementId": "searchResults",  // Element to contain results
     "urlElementId": "searchUrl",  // Element to display search URL
+    "countElementId": "resultCount",  // Element showing number of results
     "pagesElementId": "pagination",  // Element to display result page links
     "showPages": 5  // MUST BE ODD NUMBER! Max number of page links to show
 };
@@ -71,19 +72,12 @@ function makePageLink(currentUrl, currentStart, start, linkText) {
 // Creates links to additional pages of search results.
 // Requires a start URI argument indicating start index of search results
 // as passed to the server providing the search results.
-function makePageLinks(total, limit, showPages) {
+function makePageLinks(total, limit, showPages, currentStart) {
     if (total <= limit) {
         return "";
     }
 
     var currentUrl = window.location.href;
-    var currentStart = getParameterByName("start");
-    if (!currentStart) {
-        currentStart = 0;
-    }
-    else {
-        currentStart = parseInt(currentStart);
-    }
     var numPages = Math.ceil(total / limit);
     var currentPage = Math.floor(currentStart / limit) + 1;
     var pagesLeftRight = Math.floor(showPages / 2);
@@ -115,6 +109,33 @@ function makePageLinks(total, limit, showPages) {
     return link_list.join("");
 }
 
+
+function showResultCount(total, limitPerPage, currentStartIndex) {
+    if (total == 0) {
+        return;
+    }
+
+    var s = "";
+    if (total > 1) {
+        s = "s";
+    }
+    if (total <= limitPerPage) {
+        var html = "<p>Found " + total + " result" + s + "</p>";
+    }
+    else {
+        var fromCount = currentStartIndex + 1;
+        var toCount = currentStartIndex + limitPerPage;
+        if (toCount > total) {
+            toCount = total;
+        }
+        var html = ("<p>Showing results " + fromCount + " to " + toCount + 
+                    " out of " + total + "</p>");
+    }
+    var element = document.getElementById(ZOTERO_CONFIG["countElementId"]);
+    element.innerHTML = html;
+}
+
+
 // Function to call if CORS request is successful
 function successCallback(headers, response) {
     document.body.style.cursor = "default";
@@ -125,12 +146,21 @@ function successCallback(headers, response) {
     document.getElementById(elementId).innerHTML = resultHtml;
 
     // Add links to additional search result pages if necessary
+    var currentStart = getParameterByName("start");
+    if (!currentStart) {
+        currentStart = 0;
+    }
+    else {
+        currentStart = parseInt(currentStart);
+    }
     var count = parseInt(headers["Total-Results"]);
     var limit = parseInt(ZOTERO_CONFIG["limit"]);
     var showPages = parseInt(ZOTERO_CONFIG["showPages"]);
-    var pageLinkHtml = makePageLinks(count, limit, showPages);
+    var pageLinkHtml = makePageLinks(count, limit, showPages, currentStart);
     var pageElementId = ZOTERO_CONFIG["pagesElementId"];
     document.getElementById(pageElementId).innerHTML = pageLinkHtml;
+    
+    showResultCount(count, limit, currentStart);
 }
 
 
