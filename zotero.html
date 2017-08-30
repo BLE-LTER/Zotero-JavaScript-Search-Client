@@ -2,14 +2,14 @@
 <html>
 <head>
 	<title>Demo Zotero Search</title>
-	<link href="pagination.css" rel="stylesheet" type="text/css">
+	<link href="search.css" rel="stylesheet" type="text/css">
 	<script src="cors.js"></script>
 	<script src="zotero.js"></script>
 </head>
 <body>
 	<p>Enter a search term, e.g., groundwater. A water project group, with ID 1586722, will be searched.</p>
 	<form id="zoteroSearchForm" name="zoteroSearchForm">
-		<input name="q" placeholder="Enter search term" type="text"> <input type="submit" value="Search">
+		<input class="search-input" name="q" placeholder="Enter search term" type="text"> <input type="submit" value="Search">
 	</form>
 	<p>Search URL will be written below:</p>
 	<p id="searchUrl"></p>
