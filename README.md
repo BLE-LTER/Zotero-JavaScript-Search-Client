@@ -1,6 +1,8 @@
 # Zotero-JavaScript-Search-Client
 Example HTML, CSS, and JavaScript for searching for items within a public Zotero group
 
+[See a live demo at RawGit](https://cdn.rawgit.com/twhiteaker/Zotero-JavaScript-Search-Client/bd796edc/zotero.html)
+
 ## Motivation
 
 To help users discover your publications, you can add them to an online database like Zotero and then present a search interface to that database on your website. Modules for doing so have been written for WordPress and Drupal, but I hadn't seen one for static HTML sites, so I wrote this example to test how feasible a static HTML Zotero client would be to implement. My ultimate goal is to find a bibliography search solution for the website for my Long Term Ecological Research (LTER) project.
