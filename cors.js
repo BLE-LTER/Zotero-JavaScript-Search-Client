@@ -32,7 +32,7 @@ function makeCorsRequest(url, successCallback, errorCallback) {
     var header_dict = {};
     for (var i = 0; i < headers.length; i++) {
         var parts = headers[i].split(": ");
-        header_dict[parts[0]] = parts[1];
+        header_dict[parts[0].toLowerCase()] = parts[1];
     }
 
     successCallback(header_dict, xhr.responseText);

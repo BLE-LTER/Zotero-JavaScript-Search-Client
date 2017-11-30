@@ -72,7 +72,7 @@ function successCallback(headers, response) {
     else {
         currentStart = parseInt(currentStart);
     }
-    var count = parseInt(headers["Total-Results"]);
+    var count = parseInt(headers["total-results"]);
     var limit = parseInt(ZOTERO_CONFIG["limit"]);
     var showPages = parseInt(ZOTERO_CONFIG["showPages"]);
     var pageElementId = ZOTERO_CONFIG["pagesElementId"];
