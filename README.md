@@ -1,7 +1,7 @@
 # Zotero-JavaScript-Search-Client
 Example HTML, CSS, and JavaScript for searching for items within a public Zotero group
 
-[See a live demo at RawGit](https://cdn.rawgit.com/twhiteaker/Zotero-JavaScript-Search-Client/bd796edc/zotero.html)
+[See a live demo at RawGit](https://cdn.rawgit.com/twhiteaker/Zotero-JavaScript-Search-Client/master/zotero.html)
 
 ## Motivation
 
