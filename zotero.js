@@ -3,7 +3,7 @@
 "use strict";
 
 var ZOTERO_CONFIG = {
-    "publicGroupId": "1586722",  // ID of public group to search in Zotero
+    "publicGroupId": "2055673",  // ID of public group to search in Zotero
     "limit": 10,  // Max number of results to retrieve per page
     "resultsElementId": "searchResults",  // Element to contain results
     "urlElementId": "searchUrl",  // Element to display search URL
