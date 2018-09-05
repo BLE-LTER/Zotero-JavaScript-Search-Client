@@ -98,10 +98,11 @@ function showUrl(url) {
 
 
 // Passes search URL and callbacks to CORS function
-function searchZotero(query, publicGroupId, start=0) {
+function searchZotero(query, publicGroupId, start) {
     var base = "https://api.zotero.org/groups/";
     var params = "/items?v=3&include=bib&sort=date&itemType=-attachment&q=";
     var limit = "&limit=" + ZOTERO_CONFIG["limit"];
+    if (start === undefined) start = "0";
     start = "&start=" + start;
     var url = base + publicGroupId + params + query + limit + start;
     showUrl(url);
