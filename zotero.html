@@ -13,7 +13,8 @@
 </head>
 
 <body>
-   <p>Enter a search term, e.g., groundwater. The LTER group, with ID 2055673, will be searched.</p>
+   <p>Enter a search term, e.g., groundwater. The LTER group, with ID <span id="displayId">(not set)</span>, will be
+      searched.</p>
    <form id="zoteroSearchForm" name="zoteroSearchForm">
       <input type="hidden" id="sort" name="sort" value="date">
       <input class="search-input" name="q" placeholder="Enter search term" type="text">
@@ -68,6 +69,9 @@
    </div>
    <div id="searchResults"></div>
    <div class="pagination" id="paginationBot"></div>
+   <script>
+      document.getElementById("displayId").innerHTML = ZOTERO_CONFIG["publicGroupId"];
+   </script>
 </body>
 
 </html>

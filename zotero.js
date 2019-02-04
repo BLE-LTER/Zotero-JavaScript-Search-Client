@@ -3,15 +3,15 @@
 "use strict";
 
 var ZOTERO_CONFIG = {
-   "publicGroupId": "2055673",  // ID of public group to search in Zotero
-   "limit": 10,  // Max number of results to retrieve per page
-   "resultsElementId": "searchResults",  // Element to contain results
-   "urlElementId": "searchUrl",  // Element to display search URL
-   "countElementId": "resultCount",  // Element showing number of results
-   "pagesTopElementId": "paginationTop",  // Element to display result page links above results
-   "pagesBotElementId": "paginationBot",  // Element to display result page links below results
-   "showPages": 5,  // MUST BE ODD NUMBER! Max number of page links to show
-   "sortDiv": "sortDiv"  // Element with interactive sort options
+   "publicGroupId": "2055673", // ID of public group to search in Zotero
+   "limit": 10, // Max number of results to retrieve per page
+   "resultsElementId": "searchResults", // Element to contain results
+   "urlElementId": "searchUrl", // Element to display search URL
+   "countElementId": "resultCount", // Element showing number of results
+   "pagesTopElementId": "paginationTop", // Element to display result page links above results
+   "pagesBotElementId": "paginationBot", // Element to display result page links below results
+   "showPages": 5, // MUST BE ODD NUMBER! Max number of page links to show
+   "sortDiv": "sortDiv" // Element with interactive sort options
 };
 
 
@@ -44,8 +44,7 @@ function parseZoteroResults(resultText) {
    }
    if (html.length) {
       return html.join("<br>");
-   }
-   else {
+   } else {
       return "<p>Your search returned no results.</p>";
    }
 }
@@ -56,8 +55,7 @@ function show_loading(isLoading) {
    if (isLoading) {
       document.body.style.cursor = "wait";
       x.style.display = "block";
-   }
-   else {
+   } else {
       document.body.style.cursor = "default";
       x.style.display = "none";
    }
@@ -77,8 +75,7 @@ function successCallback(headers, response) {
    var currentStart = getParameterByName("start");
    if (!currentStart) {
       currentStart = 0;
-   }
-   else {
+   } else {
       currentStart = parseInt(currentStart);
    }
    var count = parseInt(headers["total-results"]);
