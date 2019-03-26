@@ -3,7 +3,9 @@
 "use strict";
 
 var ZOTERO_CONFIG = {
-   "publicGroupId": "2055673", // ID of public group to search in Zotero
+   "zotId": "2055673", // ID of group or user library to search in Zotero
+   "zotIdType": "group", // group or user
+   "collectionKey": "", // Key of collection within library to search, or "" if no collection.
    "limit": 10, // Max number of results to retrieve per page
    "resultsElementId": "searchResults", // Element to contain results
    "urlElementId": "searchUrl", // Element to display search URL
@@ -50,7 +52,7 @@ function parseZoteroResults(resultText) {
 }
 
 
-function show_loading(isLoading) {
+function showLoading(isLoading) {
    var x = document.getElementById("loading-div");
    if (isLoading) {
       document.body.style.cursor = "wait";
@@ -64,7 +66,7 @@ function show_loading(isLoading) {
 
 // Function to call if CORS request is successful
 function successCallback(headers, response) {
-   show_loading(false);
+   showLoading(false);
 
    // Write results to page
    var resultHtml = parseZoteroResults(response);
@@ -92,7 +94,7 @@ function successCallback(headers, response) {
 
 // Function to call if CORS request fails
 function errorCallback() {
-   show_loading(false);
+   showLoading(false);
    alert("There was an error making the request.");
 }
 
@@ -108,14 +110,15 @@ function showUrl(url) {
 
 // Passes search URL and callbacks to CORS function
 function searchZotero(query, itemType, sort, start) {
-   var base = "https://api.zotero.org/groups/" +
-      ZOTERO_CONFIG["publicGroupId"] + "/items?v=3&include=bib";
+   var zotId = (ZOTERO_CONFIG["zotIdType"] === "group") ? "groups/" + ZOTERO_CONFIG["zotId"] : "users/" + ZOTERO_CONFIG["zotId"];
+   var collection = (ZOTERO_CONFIG["collectionKey"] === "") ? "/" : "/collections/" + ZOTERO_CONFIG["collectionKey"] + "/";
+   var base = "https://api.zotero.org/" + zotId + collection + "/items?v=3&include=bib,data";
    var params = "&q=" + encodeURI(query) + "&itemType=" + itemType +
       "&sort=" + sort + "&start=" + start;
    var limit = "&limit=" + ZOTERO_CONFIG["limit"];
    var url = base + params + limit;
    showUrl(url);
-   show_loading(true);
+   showLoading(true);
    makeCorsRequest(url, successCallback, errorCallback);
 }
 

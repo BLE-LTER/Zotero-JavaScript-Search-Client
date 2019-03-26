@@ -4,8 +4,8 @@
 <head>
    <title>Demo Zotero Search</title>
    <meta charset="utf-8" />
-   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-      crossorigin="anonymous">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
    <link href="search.css" rel="stylesheet" type="text/css">
    <script src="cors.js"></script>
    <script src="pagination.js"></script>
@@ -13,7 +13,7 @@
 </head>
 
 <body>
-   <p>Enter a search term, e.g., groundwater. The LTER group, with ID <span id="displayId">(not set)</span>, will be
+   <p>Enter a search term, e.g., groundwater. The user or group with ID <span id="displayId">(not set)</span> will be
       searched.</p>
    <form id="zoteroSearchForm" name="zoteroSearchForm">
       <input type="hidden" id="sort" name="sort" value="date">
@@ -21,8 +21,8 @@
       <input type="submit" value="Search">
 
       <div style="margin-top: 10px">
-         <input aria-expanded="false" aria-controls="advancedInputs" class="collapse-toggle" name="expanded" type="checkbox"
-            value="true" id="advancedToggle" role="button">
+         <input aria-expanded="false" aria-controls="advancedInputs" class="collapse-toggle" name="expanded"
+            type="checkbox" value="true" id="advancedToggle" role="button">
          <label class="lbl-toggle" tabindex="0" for="advancedToggle">
             Advanced
          </label>
@@ -70,7 +70,7 @@
    <div id="searchResults"></div>
    <div class="pagination" id="paginationBot"></div>
    <script>
-      document.getElementById("displayId").innerHTML = ZOTERO_CONFIG["publicGroupId"];
+      document.getElementById("displayId").innerHTML = ZOTERO_CONFIG["zotId"];
    </script>
 </body>
 
