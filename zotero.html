@@ -2,8 +2,10 @@
 <html lang="en">
 
 <head>
-   <title>Demo Zotero Search</title>
+   <title>Demo Zotero Search (max UI)</title>
    <meta charset="utf-8" />
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
       integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
    <link href="search.css" rel="stylesheet" type="text/css">
@@ -13,62 +15,67 @@
 </head>
 
 <body>
-   <p>Enter a search term, e.g., groundwater. The user or group with ID <span id="displayId">(not set)</span> will be
-      searched.</p>
-   <form id="zoteroSearchForm" name="zoteroSearchForm">
-      <input type="hidden" id="sort" name="sort" value="date">
-      <input class="search-input" name="q" placeholder="Enter search term" type="text">
-      <input type="submit" value="Search">
+   <div class="container">
+      <h1>Complete User Interface Example</h1>
+      <p>This example shows all possible user interface items. It also shows
+         the URL with parameters sent to the Zotero API.</p>
+      <p>Enter a search term, e.g., groundwater. The user or group with ID <span id="displayId">(not set)</span> will be
+         searched.</p>
+      <form id="zoteroSearchForm" name="zoteroSearchForm">
+         <input type="hidden" id="sort" name="sort" value="date">
+         <input class="search-input" name="q" placeholder="Enter search term" type="text">
+         <input type="submit" value="Search">
 
-      <div style="margin-top: 10px">
-         <input aria-expanded="false" aria-controls="advancedInputs" class="collapse-toggle" name="expanded"
-            type="checkbox" value="true" id="advancedToggle" role="button">
-         <label class="lbl-toggle" tabindex="0" for="advancedToggle">
-            Advanced
-         </label>
-      </div>
+         <div style="margin-top: 10px">
+            <input aria-expanded="false" aria-controls="advancedInputs" class="collapse-toggle" name="expanded"
+               type="checkbox" value="true" id="advancedToggle" role="button">
+            <label class="lbl-toggle" tabindex="0" for="advancedToggle">
+               Advanced
+            </label>
+         </div>
 
-      <div class="collapsible" id="advancedInputs">
-         <div class="input-block">
-            <i class="fas fa-book"></i><label class="group-label" for="itemType">Item Type</label><br>
-            <select class="search-input" name="itemType" id="itemType">
-               <option value="-attachment">Any</option>
-               <option value="journalArticle">Journal Article</option>
-               <option value="book">Book</option>
-               <option value="bookSection">Book Section</option>
-               <option value="thesis">Thesis</option>
-               <!--
+         <div class="collapsible" id="advancedInputs">
+            <div class="input-block">
+               <i class="fas fa-book"></i><label class="group-label" for="itemType">Item Type</label><br>
+               <select class="search-input" name="itemType" id="itemType">
+                  <option value="-attachment">Any</option>
+                  <option value="journalArticle">Journal Article</option>
+                  <option value="book">Book</option>
+                  <option value="bookSection">Book Section</option>
+                  <option value="thesis">Thesis</option>
+                  <!--
                <option value="conferencePaper">Conference Paper</option>
                <option value="magazineArticle">Magazine Article</option>
                <option value="videoRecording">Video</option>-->
-            </select>
+               </select>
+            </div>
+            <input type="submit" value="Search">
          </div>
-         <input type="submit" value="Search">
+      </form>
+
+      <div class="loading" id="loading-div">
+         <i class="fas fa-spinner fa-pulse fa-3x fa-fw"></i>
+         <span class="sr-only">Loading...</span>
       </div>
-   </form>
 
-   <div class="loading" id="loading-div">
-      <i class="fas fa-spinner fa-pulse fa-3x fa-fw"></i>
-      <span class="sr-only">Loading...</span>
+      <p>Search URL will be written below:</p>
+      <p id="searchUrl"></p>
+      <p>Search results will be written below:</p>
+      <div class="resultCount" id="resultCount"></div>
+      <div class="pagination" id="paginationTop"></div>
+      <div style="display:none" id="sortDiv">
+         <label for="visibleSort">Sort by</label>
+         <select name="sort" id="visibleSort">
+            <option value="date">Publication Date</option>
+            <option value="dateAdded">Date Added</option>
+            <option value="itemType">Item Type</option>
+            <option value="creator">Creator (a-z)</option>
+            <option value="title">Title (a-z)</option>
+         </select>
+      </div>
+      <div id="searchResults"></div>
+      <div class="pagination" id="paginationBot"></div>
    </div>
-
-   <p>Search URL will be written below:</p>
-   <p id="searchUrl"></p>
-   <p>Search results will be written below:</p>
-   <div class="resultCount" id="resultCount"></div>
-   <div class="pagination" id="paginationTop"></div>
-   <div style="display:none" id="sortDiv">
-      <label for="visibleSort">Sort by</label>
-      <select name="sort" id="visibleSort">
-         <option value="date">Publication Date</option>
-         <option value="dateAdded">Date Added</option>
-         <option value="itemType">Item Type</option>
-         <option value="creator">Creator (a-z)</option>
-         <option value="title">Title (a-z)</option>
-      </select>
-   </div>
-   <div id="searchResults"></div>
-   <div class="pagination" id="paginationBot"></div>
    <script>
       document.getElementById("displayId").innerHTML = ZOTERO_CONFIG["zotId"];
    </script>

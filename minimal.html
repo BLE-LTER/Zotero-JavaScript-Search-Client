@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <title>Demo Zotero Search (min UI)</title>
+   <meta charset="utf-8" />
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+   <link href="search.css" rel="stylesheet" type="text/css">
+   <script src="cors.js"></script>
+   <script src="pagination.js"></script>
+   <script src="zotero.js"></script>
+</head>
+
+<body>
+   <div class="container">
+      <h1>Minimal User Interface Example</h1>
+      <p>This example does not include elements for letting the user filter by
+         item type or sorting results. It also does not display the search URL.</p>
+      <p>Enter a search term, e.g., groundwater. The user or group with ID <span id="displayId">(not set)</span> will be
+         searched.</p>
+      <form id="zoteroSearchForm" name="zoteroSearchForm">
+         <input type="hidden" id="sort" name="sort" value="date">
+         <input class="search-input" name="q" placeholder="Enter search term" type="text">
+         <input type="submit" value="Search">
+      </form>
+
+      <div class="loading" id="loading-div">
+         <i class="fas fa-spinner fa-pulse fa-3x fa-fw"></i>
+         <span class="sr-only">Loading...</span>
+      </div>
+
+      <p>Search results will be written below:</p>
+      <div class="resultCount" id="resultCount"></div>
+      <div id="searchResults"></div>
+      <div class="pagination" id="paginationBot"></div>
+   </div>
+   <script>
+      document.getElementById("displayId").innerHTML = ZOTERO_CONFIG["zotId"];
+   </script>
+</body>
+
+</html>
