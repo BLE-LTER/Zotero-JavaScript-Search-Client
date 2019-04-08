@@ -2,7 +2,10 @@
 Example HTML, CSS, and JavaScript for searching for items within a public Zotero
 user or group library
 
-[See a live demo at RawGit](https://cdn.rawgit.com/twhiteaker/Zotero-JavaScript-Search-Client/2297dc82/zotero.html)
+Some live demos:
+
+* [Basic example](minimal.html)
+* [Complete example](complete.html)
 
 ## Motivation
 
