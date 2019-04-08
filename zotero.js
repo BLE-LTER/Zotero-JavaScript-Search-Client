@@ -374,7 +374,10 @@ window.onload = function () {
    document.forms.zoteroSearchForm.q.value = query;
    var itemType = setSelectValue("itemType", itemTypeParam);
    var sort = setSelectValue("visibleSort", sortParam);
-   document.forms.zoteroSearchForm.sort.value = sort;
+   var sortHiddenInput = document.getElementById("sort");
+   if (sortHiddenInput) {
+      document.forms.zoteroSearchForm.sort.value = sort;
+   }
 
    initForm("zoteroSearchForm", expanded);
 
