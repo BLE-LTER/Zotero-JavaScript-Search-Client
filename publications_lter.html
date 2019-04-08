@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <title>JRN Publications</title>
+   <meta charset="utf-8" />
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+   <link href="search.css" rel="stylesheet" type="text/css">
+   <script src="cors.js"></script>
+   <script src="pagination.js"></script>
+   <script src="zotero.js"></script>
+</head>
+
+<body>
+   <div class="container">
+      <form id="zoteroSearchForm" name="zoteroSearchForm">
+         <input class="search-input" name="q" placeholder="Enter search term" type="text">
+         <input type="submit" value="Search">
+      </form>
+
+      <div class="loading" id="loading-div">
+         <i class="fas fa-spinner fa-pulse fa-3x fa-fw"></i>
+         <span class="sr-only">Loading...</span>
+      </div>
+
+      <div class="resultCount" id="resultCount"></div>
+      <div id="searchResults"></div>
+      <div class="pagination" id="paginationBot"></div>
+   </div>
+</body>
+
+</html>
