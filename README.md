@@ -4,8 +4,8 @@ user or group library
 
 Some live demos:
 
-* [Basic example](minimal.html)
-* [Complete example](complete.html)
+* [Basic example](https://ble-lter.github.io/Zotero-JavaScript-Search-Client/minimal.html)
+* [Complete example](https://ble-lter.github.io/Zotero-JavaScript-Search-Client/complete.html)
 
 ## Motivation
 
