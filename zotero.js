@@ -185,6 +185,9 @@ function parseZoteroResults(resultText) {
    for (var i = 0; i < results.length; i++) {
       var result = results[i];
       var year = parseYear(result["data"]["date"]);
+      if (!year) {
+         year = parseYear(result["data"]["issueDate"]);
+      }
       var itemType = parseType(result["data"]["itemType"]);
       var tagsToShow = parseShowTags(result["data"]["tags"]);
       var row = "<tr>";
