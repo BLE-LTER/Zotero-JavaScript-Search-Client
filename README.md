@@ -1,8 +1,9 @@
-# Zotero-JavaScript-Search-Client
+# [Zotero-JavaScript-Search-Client](https://github.com/BLE-LTER/Zotero-JavaScript-Search-Client)
+
 Example HTML, CSS, and JavaScript for searching for items within a public Zotero
 user or group library
 
-Some live demos:
+Live demos:
 
 * [Basic example](https://ble-lter.github.io/Zotero-JavaScript-Search-Client/minimal.html)
 * [Complete example](https://ble-lter.github.io/Zotero-JavaScript-Search-Client/complete.html)
