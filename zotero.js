@@ -149,6 +149,22 @@ function parseZoteroResults(resultText) {
       return matches.join(", ");
    }
 
+   function parseDataLinks(extra) {
+      if (extra) {
+         var dois = extra.split(/\r?\n/);
+         var links = []
+         for (var i = 0; i < dois.length; i++) {
+            var doi = dois[i];
+            if (doi.startsWith("https://doi.org/")) {
+               links.push(' <a href="' + doi + '" target="_blank" rel="noopener">Data Link</a>');
+            }
+         }
+         return links.join(" ");
+      } else {
+         return "";
+      }
+   }
+
    var results = JSON.parse(resultText);
    var sortDiv = document.getElementById(ZOTERO_CONFIG["sortDiv"]);
    if (sortDiv) {
@@ -190,11 +206,12 @@ function parseZoteroResults(resultText) {
       }
       var itemType = parseType(result["data"]["itemType"]);
       var tagsToShow = parseShowTags(result["data"]["tags"]);
+      var links = parseDataLinks(result["data"]["extra"]);
       var row = "<tr>";
       if (showYear) {
          row += "<td>" + year + "</td>";
       }
-      row += "<td>" + result["bib"] + "</td>";
+      row += "<td>" + result["bib"] + links + "</td>";
       if (showType) {
          row += "<td>" + itemType + "</td>";
       }

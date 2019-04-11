@@ -1,8 +1,9 @@
-# Zotero-JavaScript-Search-Client
+# [Zotero-JavaScript-Search-Client](https://github.com/BLE-LTER/Zotero-JavaScript-Search-Client)
+
 Example HTML, CSS, and JavaScript for searching for items within a public Zotero
 user or group library
 
-Some live demos:
+Live demos:
 
 * [Basic example](https://ble-lter.github.io/Zotero-JavaScript-Search-Client/minimal.html)
 * [Complete example](https://ble-lter.github.io/Zotero-JavaScript-Search-Client/complete.html)
@@ -70,8 +71,7 @@ presence of particular tags.
   to your LTER site, indicating whether the item is a foundational paper for the
   site (`Fondational`), was funded by the site (`LTER-Funded`), or was written by someone outside of your site
   who used your site's data (`LTER-Enabled`). If an item has one of the tags
-  you specify, the tag will be shown in the `ShowTags` column. Obviously, if you
-  want to use this functionality, make sure the text `ShowTags` is included in
+  you specify, the tag will be shown in the `ShowTags` column. To use this functionality, make sure the text `ShowTags` is included in
   `includeCols`.
 * `showTagColName` - The name to be used for the `ShowTags` column in the
   results table, since I can't predict what kind of categories your tags
@@ -79,6 +79,15 @@ presence of particular tags.
   mentioned above.
 * `style` - The bibliography display style for the citations, e.g., apa. Leave
   blank for the default which is chicago-note-bibliography.
+
+You can also supply links to datasets that the publication references by
+placing each dataset's DOI (with https://doi.org/ in front of it) on its own
+line in the **Extra** field in Zotero, as in:
+
+```bash
+https://doi.org/10.18739/A2GX44T8M
+https://doi.org/10.18739/A2MP4VN1H
+```
 
 ### Result Counts and Pagination
 
