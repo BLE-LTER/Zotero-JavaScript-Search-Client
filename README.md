@@ -3,6 +3,8 @@
 Example HTML, CSS, and JavaScript for searching for items within a public Zotero
 user or group library
 
+[See the Repo](https://github.com/BLE-LTER/Zotero-JavaScript-Search-Client)
+
 Live demos:
 
 * [Basic example](https://ble-lter.github.io/Zotero-JavaScript-Search-Client/minimal.html)
