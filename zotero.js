@@ -156,7 +156,7 @@ function parseZoteroResults(resultText) {
          for (var i = 0; i < dois.length; i++) {
             var doi = dois[i];
             if (doi.startsWith("https://doi.org/")) {
-               links.push(' <a href="' + doi + '" target="_blank" rel="noopener">Data Link</a>');
+               links.push(' <a href="' + doi + '" target="_blank" rel="noopener">Data link.</a>');
             }
          }
          return links.join(" ");

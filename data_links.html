@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <title>Zotero Search Demo with Data Links</title>
+   <meta charset="utf-8" />
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+   <link href="search.css" rel="stylesheet" type="text/css">
+   <script src="cors.js"></script>
+   <script src="pagination.js"></script>
+   <script src="zotero.js"></script>
+</head>
+
+<body>
+   <div class="container">
+      <h1>Zotero Search Demo with Data Links</h1>
+      <p>This <a href="https://github.com/BLE-LTER/Zotero-JavaScript-Search-Client"
+            rel="noopener">Zotero-JavaScript-Search-Client</a> example demonstrates how data links are added to a publication citation when DOIs are found within the <strong>Extra</strong> field in Zotero.
+            The group is just a test group, and the data links aren't related to the publication in this example, but the example does illustrate the functionality. Look for the example to be replaced with a real-world example as users apply this functionality to their own libraries.</p>
+      <form id="zoteroSearchForm" name="zoteroSearchForm">
+         <input class="search-input" name="q" placeholder="Enter search term" type="text">
+         <input type="submit" value="Search">
+      </form>
+
+      <div class="loading" id="loading-div">
+         <i class="fas fa-spinner fa-pulse fa-3x fa-fw"></i>
+         <span class="sr-only">Loading...</span>
+      </div>
+
+      <p>Search results will be written below:</p>
+      <div class="resultCount" id="resultCount"></div>
+      <div id="searchResults"></div>
+      <div class="pagination" id="paginationBot"></div>
+   </div>
+   <script>
+      ZOTERO_CONFIG["zotId"] = "2221709";
+      ZOTERO_CONFIG["includeCols"] = ["Year", "Type"];
+   </script>
+</body>
+
+</html>

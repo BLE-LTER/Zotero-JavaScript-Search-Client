@@ -9,6 +9,7 @@ Live demos:
 
 * [Basic example](https://ble-lter.github.io/Zotero-JavaScript-Search-Client/minimal.html)
 * [Complete example](https://ble-lter.github.io/Zotero-JavaScript-Search-Client/complete.html)
+* [Data link example](https://ble-lter.github.io/Zotero-JavaScript-Search-Client/data_links.html)
 
 ## Motivation
 
