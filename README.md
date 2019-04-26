@@ -83,7 +83,22 @@ presence of particular tags.
 * `style` - The bibliography display style for the citations, e.g., apa. Leave
   blank for the default which is chicago-note-bibliography.
 
-You can also supply links to datasets that the publication references by
+The allowable values for the `style` parameter are filenames from the [Zotero Style
+Repository](https://www.zotero.org/styles), without the .csl extension. Find the style you want on that
+page, and then hover you mouse over the style name and click Source, and then
+read the `id` for the style.  For example, the filename for [Analytica Chimica
+Acta: X](https://www.zotero.org/styles/analytica-chimica-acta-x?source=1) is
+actually `analytica-chimica-acta-x`.  You can also host your own style file
+(*.csl) on a public facing Web server and provide the **full URL** to the file
+in ZOTERO_CONFIG's `style` parameter, as in:
+
+```JavaScript
+ZOTERO_CONFIG["style"] = "https://mysite.org/mystyle.csl";
+```
+
+### Data Links
+
+You can supply links to datasets that the publication references by
 placing each dataset's DOI (with https://doi.org/ in front of it) on its own
 line in the **Extra** field in Zotero, as in:
 

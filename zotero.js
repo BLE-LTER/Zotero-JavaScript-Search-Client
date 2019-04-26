@@ -5,7 +5,7 @@
 var ZOTERO_CONFIG = {
    "zotId": "2211939", // ID of group or user library to search in Zotero, e.g., 2211939, 2055673
    "zotIdType": "group", // group or user
-   "collectionKey": "", // Key of collection within library to search, e.g., "KHTHLKB5", or "" if no collection
+   "collectionKey": "KHTHLKB5", // Key of collection within library to search, e.g., "KHTHLKB5", or "" if no collection
    "filterTags": "", // For filtering results by tag(s), e.g., "&tag=LTER-Funded".  See examples at https://www.zotero.org/support/dev/web_api/v3/basics
    "resultsElementId": "searchResults", // Element to contain results
    "includeCols": ["Year", "Type", "ShowTags"], // Array of columns to include in the output table, other than Citation. The full set is ["Year", "Type", "ShowTags"]
@@ -282,12 +282,17 @@ function showUrl(url) {
 }
 
 
+function encodeStyle(style) {
+   return style.replace(/\//g, '%3A').replace(/:/g, '%2F');
+}
+
+
 // Passes search URL and callbacks to CORS function
 function searchZotero(query, itemType, sort, start) {
    var zotId = (ZOTERO_CONFIG["zotIdType"] === "group") ? "groups/" + ZOTERO_CONFIG["zotId"] : "users/" + ZOTERO_CONFIG["zotId"];
-   var collection = (ZOTERO_CONFIG["collectionKey"] === "") ? "/" : "/collections/" + ZOTERO_CONFIG["collectionKey"] + "/";
+   var collection = (ZOTERO_CONFIG["collectionKey"] === "") ? "" : "/collections/" + ZOTERO_CONFIG["collectionKey"];
    var base = "https://api.zotero.org/" + zotId + collection + "/items?v=3&include=bib,data";
-   var style = (ZOTERO_CONFIG["style"] === "") ? "" : "&style=" + ZOTERO_CONFIG["style"];
+   var style = (ZOTERO_CONFIG["style"] === "") ? "" : "&style=" + encodeStyle(ZOTERO_CONFIG["style"]);
    var params = "&q=" + encodeURI(query) + "&itemType=" + itemType +
       "&sort=" + sort + "&start=" + start + ZOTERO_CONFIG["filterTags"];
    var limit = "&limit=" + ZOTERO_CONFIG["limit"];
