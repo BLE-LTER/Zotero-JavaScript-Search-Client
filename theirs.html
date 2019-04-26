@@ -1,32 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+<!-- To go from local file system to hosted at JRN:
+   1. Remove HTML tags, since JRN uses an iframe
+   2. Put a forward slash in front of the CSS and JS file locations in <head>.
+-->
 
 <head>
-   <title>Demo Zotero Search (max UI)</title>
+   <title>Jornada Basin LTER Bibliography</title>
    <meta charset="utf-8" />
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-   <link href="search.css" rel="stylesheet" type="text/css">
-   <script src="cors.js"></script>
-   <script src="pagination.js"></script>
-   <script src="zotero.js"></script>
+   <link rel="stylesheet" href="files/css/lter_bibliography/bootstrap.min.css" type="text/css">
+   <link rel="stylesheet" href="files/css/lter_bibliography/fa.all.css" type="text/css">
+   <link href="files/css/lter_bibliography/search.css" rel="stylesheet" type="text/css">
+   <script src="files/js/lter_bibliography/cors.js"></script>
+   <script src="files/js/lter_bibliography/pagination.js"></script>
+   <script src="files/js/lter_bibliography/zotero.js"></script>
 </head>
 
 <body>
    <div class="container">
-      <h1>Complete User Interface Example</h1>
-      <p>This <a href="https://github.com/BLE-LTER/Zotero-JavaScript-Search-Client"
-            rel="noopener">Zotero-JavaScript-Search-Client</a> example
-         shows all possible user interface items. It also shows
-         the URL with parameters sent to the Zotero API.</p>
-      <p>Enter a search term, e.g., water. The user or group with ID <span id="displayId">(not set)</span> will be
-         searched.</p>
+      <br />
       <form id="zoteroSearchForm" name="zoteroSearchForm">
          <input type="hidden" id="sort" name="sort" value="date">
          <input class="search-input" name="q" placeholder="Enter search term" type="text">
-         <input type="submit" value="Search">
 
          <div style="margin-top: 10px">
             <input aria-expanded="false" aria-controls="advancedInputs" class="collapse-toggle" name="expanded"
@@ -45,14 +39,18 @@
                   <option value="book">Book</option>
                   <option value="bookSection">Book Section</option>
                   <option value="thesis">Thesis</option>
-                  <!--
-               <option value="conferencePaper">Conference Paper</option>
-               <option value="magazineArticle">Magazine Article</option>
-               <option value="videoRecording">Video</option>-->
+               </select>
+               <i class="fas fa-address-book"></i><label class="group-label" for="author">Author</label><br>
+               <select class="search-input" name="author" id="author">
+                  <option value="">Any</option>
+                  <option value="Brandon T. Bestelmeyer">Bestelmeyer, Brandon</option>
+                  <option value="Stephanie Bestelmeyer">Bestelmeyer, Stephanie</option>
+                  <option value="Debra P. C. Peters">Peters, Debra</option>
+                  <option value="Osvaldo E. Sala">Sala, Osvaldo</option>
                </select>
             </div>
-            <input type="submit" value="Search">
          </div>
+         <input type="submit" value="Search">&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="Reset">
       </form>
 
       <div class="loading" id="loading-div">
@@ -62,7 +60,6 @@
 
       <p>Search URL will be written below:</p>
       <p id="searchUrl"></p>
-      <p>Search results will be written below:</p>
       <div class="resultCount" id="resultCount"></div>
       <div class="pagination" id="paginationTop"></div>
       <div style="display:none" id="sortDiv">
@@ -78,9 +75,6 @@
       <div id="searchResults"></div>
       <div class="pagination" id="paginationBot"></div>
    </div>
-   <script>
-      document.getElementById("displayId").innerHTML = ZOTERO_CONFIG["zotId"];
-   </script>
 </body>
 
 </html>

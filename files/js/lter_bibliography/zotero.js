@@ -8,10 +8,10 @@ var ZOTERO_CONFIG = {
    "collectionKey": "", // Key of collection within library to search, e.g., "KHTHLKB5", or "" if no collection
    "filterTags": "&tag=LTER-JRN", // For filtering results by tag(s), e.g., "&tag=LTER-Funded".  See examples at https://www.zotero.org/support/dev/web_api/v3/basics
    "resultsElementId": "searchResults", // Element to contain results
-   "includeCols": ["Type"], // Array of columns to include in the output table, other than Citation. The full set is ["Year", "Type", "ShowTags"]
-   "showTags": ["Foundational", "LTER-Funded", "LTER-Enabled"], // Include a column showing this tag if present for each item
+   "includeCols": ["Year", "Type"], // Array of columns to include in the output table, other than Citation. The full set is ["Year", "Type", "ShowTags"]
+   "showTags": [], // Include a column showing this tag if present for each item
    "showTagColName": "Relationship", // Name for the column in HTML table under which the showTags will appear
-   "style": "apa", // Bibliography display style, e.g., apa. Leave blank for default which is chicago-note-bibliography.
+   "style": "elsevier-harvard", // Bibliography display style, e.g., apa. Leave blank for default which is chicago-note-bibliography.
    "limit": 25, // Max number of results to retrieve per page
    "urlElementId": "searchUrl", // Element to display search URL
    "countElementId": "resultCount", // Element showing number of results
@@ -283,13 +283,18 @@ function showUrl(url) {
 
 
 // Passes search URL and callbacks to CORS function
-function searchZotero(query, itemType, sort, start) {
+function searchZotero(query, itemType, sort, start, author) {
    var zotId = (ZOTERO_CONFIG["zotIdType"] === "group") ? "groups/" + ZOTERO_CONFIG["zotId"] : "users/" + ZOTERO_CONFIG["zotId"];
    var collection = (ZOTERO_CONFIG["collectionKey"] === "") ? "/" : "/collections/" + ZOTERO_CONFIG["collectionKey"] + "/";
    var base = "https://api.zotero.org/" + zotId + collection + "/items?v=3&include=bib,data";
    var style = (ZOTERO_CONFIG["style"] === "") ? "" : "&style=" + ZOTERO_CONFIG["style"];
-   var params = "&q=" + encodeURI(query) + "&itemType=" + itemType +
-      "&sort=" + sort + "&start=" + start + ZOTERO_CONFIG["filterTags"];
+   if (author) {
+      var params = "&q=" + encodeURI(author) + "&itemType=" + itemType +
+         "&sort=" + sort + "&start=" + start + ZOTERO_CONFIG["filterTags"];
+   } else {
+      var params = "&q=" + encodeURI(query) + "&itemType=" + itemType +
+         "&sort=" + sort + "&start=" + start + ZOTERO_CONFIG["filterTags"];
+   }
    var limit = "&limit=" + ZOTERO_CONFIG["limit"];
    var url = base + params + style + limit;
    showUrl(url);
@@ -386,6 +391,11 @@ function setSelectValue(elId, desiredValue) {
 // When the window loads, read query parameters and perform search
 window.onload = function () {
    var query = getParameterByName("q") || "";
+   var authorParam = getParameterByName("author") || "";
+   if (!query & authorParam) {
+      alert("hi");
+      var query = getParameterByName("author") || "";
+   }
    var itemTypeParam = getParameterByName("itemType") || "-attachment";
    var expanded = Boolean(getParameterByName("expanded"));
    var pageStart = getParameterByName("start") || 0;
@@ -393,6 +403,7 @@ window.onload = function () {
 
    document.forms.zoteroSearchForm.q.value = query;
    var itemType = setSelectValue("itemType", itemTypeParam);
+   var author = setSelectValue("author", authorParam);
    var sort = setSelectValue("visibleSort", sortParam);
    var sortHiddenInput = document.getElementById("sort");
    if (sortHiddenInput) {
@@ -401,5 +412,5 @@ window.onload = function () {
 
    initForm("zoteroSearchForm", expanded);
 
-   searchZotero(query, itemType, sort, pageStart);
+   searchZotero(query, itemType, sort, pageStart, author);
 };
