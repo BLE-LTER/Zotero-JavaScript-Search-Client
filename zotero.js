@@ -165,6 +165,13 @@ function parseZoteroResults(resultText) {
       }
    }
 
+   function parseItemLink(url) {
+      if (url)
+         return '<a href="' + url + '" target="_blank" rel="noopener">Item link.</a>';
+      else
+         return "";
+   }
+
    var results = JSON.parse(resultText);
    var sortDiv = document.getElementById(ZOTERO_CONFIG["sortDiv"]);
    if (sortDiv) {
@@ -206,12 +213,13 @@ function parseZoteroResults(resultText) {
       }
       var itemType = parseType(result["data"]["itemType"]);
       var tagsToShow = parseShowTags(result["data"]["tags"]);
-      var links = parseDataLinks(result["data"]["extra"]);
+      var itemLink = parseItemLink(result["data"]["url"]);
+      var dataLinks = parseDataLinks(result["data"]["extra"]);
       var row = "<tr>";
       if (showYear) {
          row += "<td>" + year + "</td>";
       }
-      row += "<td>" + result["bib"] + links + "</td>";
+      row += "<td>" + result["bib"] + itemLink + " " + dataLinks + "</td>";
       if (showType) {
          row += "<td>" + itemType + "</td>";
       }
