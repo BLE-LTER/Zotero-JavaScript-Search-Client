@@ -32,7 +32,19 @@ want to start with one of the example HTML documents and adapt it to your needs.
 
 To change parameters such as how many search results to show at a time, see the
 `ZOTERO_CONFIG` variable in `zotero.js`.  See comments in the code for a brief
-explanation and example values, or the text below for additional details.
+explanation and example values, or the text below for additional details.  I
+recommend setting your parameters in your HTML file. That way, you can overwrite
+zotero.js when enhancements are made to this repository, without having to edit
+the parameters in zotero.js for your usage.  For example, just before the
+closing `</body>` tag in your HTML, add a script tag like this one:
+
+```html
+<script>
+   ZOTERO_CONFIG["zotId"] = "2055673";
+   ZOTERO_CONFIG["collectionKey"] = "";
+   ZOTERO_CONFIG["filterTags"] = "&tag=LTER-BLE";
+</script>
+```
 
 ### What To Search
 
