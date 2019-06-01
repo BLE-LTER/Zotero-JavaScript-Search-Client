@@ -8,7 +8,7 @@
    <title>Jornada Basin LTER Bibliography</title>
    <meta charset="utf-8" />
    <link rel="stylesheet" href="files/css/lter_bibliography/bootstrap.min.css" type="text/css">
-   <link rel="stylesheet" href="files/css/lter_bibliography/fa.all.css" type="text/css">
+   <link rel="stylesheet" href="files/css/lter_bibliography/all.min.css" type="text/css">
    <link href="files/css/lter_bibliography/search.css" rel="stylesheet" type="text/css">
    <script src="files/js/lter_bibliography/cors.js"></script>
    <script src="files/js/lter_bibliography/pagination.js"></script>
@@ -34,7 +34,9 @@
             <div class="input-block">
                <i class="fas fa-book"></i><label class="group-label" for="itemType">Item Type</label><br>
                <select class="search-input" name="itemType" id="itemType">
-                  <option value="-attachment">Any</option>
+                  <option
+                     value="artwork || audioRecording || bill || blogPost || book || bookSection || case || computerProgram || conferencePaper || dictionaryEntry || document || email || encyclopediaArticle || film || forumPost || hearing || instantMessage || interview || journalArticle || letter || magazineArticle || manuscript || map || newspaperArticle || patent || podcast || presentation || radioBroadcast || report || statute || thesis || tvBroadcast || videoRecording || webpage">
+                     Any</option>
                   <option value="journalArticle">Journal Article</option>
                   <option value="book">Book</option>
                   <option value="bookSection">Book Section</option>
@@ -78,8 +80,8 @@
 
    <script>
       ZOTERO_CONFIG["zotId"] = "2294546";
-      ZOTERO_CONFIG["collectionKey"] = "";
-      ZOTERO_CONFIG["filterTags"] = "&tag=LTER-JRN";
+      ZOTERO_CONFIG["collectionKey"] = "WK48XF72";
+      //ZOTERO_CONFIG["filterTags"] = "&tag=LTER-JRN";
       ZOTERO_CONFIG["includeCols"] = ["Year", "Type"];
       ZOTERO_CONFIG["showTags"] = [];
       ZOTERO_CONFIG["style"] = "elsevier-harvard";
