@@ -399,7 +399,7 @@ function setSelectValue(elId, desiredValue) {
 // When the window loads, read query parameters and perform search
 window.onload = function () {
    var query = getParameterByName("q") || "";
-   var itemTypeParam = getParameterByName("itemType") || "-attachment";
+   var itemTypeParam = getParameterByName("itemType") || "-attachment || note";
    var expanded = Boolean(getParameterByName("expanded"));
    var pageStart = getParameterByName("start") || 0;
    var sortParam = getParameterByName("sort") || "date";
