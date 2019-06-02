@@ -395,6 +395,10 @@ function setSelectValue(elId, desiredValue) {
    return result;
 }
 
+function setEnabled() {
+   document.getElementById("author").disabled = !document.getElementById("authorOption").checked;
+   document.getElementById("q").disabled = !document.getElementById("keywordOption").checked;
+}
 
 // When the window loads, read query parameters and perform search
 window.onload = function () {
@@ -403,6 +407,10 @@ window.onload = function () {
    var expanded = Boolean(getParameterByName("expanded"));
    var pageStart = getParameterByName("start") || 0;
    var sortParam = getParameterByName("sort") || "date";
+
+   var author = getParameterByName("author") || "";
+   var searchFor = getParameterByName("searchFor") || "keyword";
+   document.forms.zoteroSearchForm.author.value = author;
 
    document.forms.zoteroSearchForm.q.value = query;
    var itemType = setSelectValue("itemType", itemTypeParam);
@@ -414,5 +422,10 @@ window.onload = function () {
 
    initForm("zoteroSearchForm", expanded);
 
+   if (searchFor === "author") {
+      query = author;
+      document.forms.zoteroSearchForm.authorOption.checked = true;
+   }
+   setEnabled();
    searchZotero(query, itemType, sort, pageStart);
 };

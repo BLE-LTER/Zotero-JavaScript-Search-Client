@@ -19,32 +19,32 @@
    <div class="container">
       <br />
       <form id="zoteroSearchForm" name="zoteroSearchForm">
-         <input type="hidden" id="sort" name="sort" value="date">
-         <input class="search-input" name="q" placeholder="Enter search term" type="text">
-
-         <div style="margin-top: 10px">
-            <input aria-expanded="false" aria-controls="advancedInputs" class="collapse-toggle" name="expanded"
-               type="checkbox" value="true" id="advancedToggle" role="button">
-            <label class="lbl-toggle" tabindex="0" for="advancedToggle">
-               Advanced
-            </label>
+         Search for:<br>
+         <div class="form-row ml-3">
+            <div class="col-auto">
+               <div class="form-check mt-1">
+                  <input class="form-check-input" type="radio" name="searchFor" value="keyword" id="keywordOption"
+                     onclick="setEnabled()" checked>
+                  <label class="form-check-label" for="keywordOption">
+                     Keyword
+                  </label>
+               </div>
+            </div>
+            <div class="col-auto">
+               <input class="search-input" name="q" id="q" placeholder="Enter search term" type="text">
+            </div>
          </div>
-
-         <div class="collapsible" id="advancedInputs">
-            <div class="input-block">
-               <i class="fas fa-book"></i><label class="group-label" for="itemType">Item Type</label><br>
-               <select class="search-input" name="itemType" id="itemType">
-                  <option value="-attachment || note">Any</option>
-                  <option value="journalArticle">Journal Article</option>
-                  <option value="book">Book</option>
-                  <option value="bookSection">Book Section</option>
-                  <option value="thesis">Thesis</option>
-                  <option value="conferencePaper">conferencePaper</option>
-                  <option value="report">report</option>
-                  <option value="magazineArticle">magazineArticle</option>
-                  <option value="webpage">webpage</option>
-               </select>
-               <i class="fas fa-address-book"></i><label class="group-label" for="author">Author</label><br>
+         <div class="form-row ml-3">
+            <div class="col-auto">
+               <div class="form-check">
+                  <input class="form-check-input" type="radio" name="searchFor" value="author" id="authorOption"
+                     onclick="setEnabled()">
+                  <label class="form-check-label" for="authorOption">
+                     Author
+                  </label>
+               </div>
+            </div>
+            <div class="col-auto">
                <select class="search-input" name="author" id="author">
                   <option value="">Any</option>
                   <option value="Brandon T. Bestelmeyer">Bestelmeyer, Brandon</option>
@@ -53,6 +53,21 @@
                   <option value="Osvaldo E. Sala">Sala, Osvaldo</option>
                </select>
             </div>
+         </div>
+         <input type="hidden" id="sort" name="sort" value="date">
+         <div class="mt-3 form-group">
+            <label class="mr-2" for="itemType">Item Type</label>
+            <select class="search-input" name="itemType" id="itemType">
+               <option value="-attachment || note">Any</option>
+               <option value="journalArticle">Journal Article</option>
+               <option value="book">Book</option>
+               <option value="bookSection">Book Section</option>
+               <option value="thesis">Thesis</option>
+               <option value="conferencePaper">Conference Paper</option>
+               <option value="report">Report</option>
+               <option value="magazineArticle">Magazine Article</option>
+               <option value="webpage">Webpage</option>
+            </select>
          </div>
          <input type="submit" value="Search">&nbsp;&nbsp;&nbsp;&nbsp;
          <input type="reset" value="Reset" onclick="window.location='publications_lter.html'">
