@@ -12,6 +12,7 @@
    <link href="files/css/lter_bibliography/search.css" rel="stylesheet" type="text/css">
    <script src="files/js/lter_bibliography/cors.js"></script>
    <script src="files/js/lter_bibliography/pagination.js"></script>
+   <script src="files/js/lter_bibliography/auto-complete.min.js"></script>
    <script src="files/js/lter_bibliography/zotero.js"></script>
 </head>
 
@@ -19,43 +20,12 @@
    <div class="container">
       <br />
       <form id="zoteroSearchForm" name="zoteroSearchForm">
-         Search for:<br>
-         <div class="form-row ml-3">
-            <div class="col-auto">
-               <div class="form-check mt-1">
-                  <input class="form-check-input" type="radio" name="searchFor" value="keyword" id="keywordOption"
-                     onclick="setEnabled()" checked>
-                  <label class="form-check-label" for="keywordOption">
-                     Keyword
-                  </label>
-               </div>
-            </div>
-            <div class="col-auto">
-               <input class="search-input" name="q" id="q" placeholder="Enter search term" type="text">
-            </div>
-         </div>
-         <div class="form-row ml-3">
-            <div class="col-auto">
-               <div class="form-check">
-                  <input class="form-check-input" type="radio" name="searchFor" value="author" id="authorOption"
-                     onclick="setEnabled()">
-                  <label class="form-check-label" for="authorOption" style="width: 61px">
-                     Author
-                  </label>
-               </div>
-            </div>
-            <div class="col-auto">
-               <select class="search-input" name="author" id="author">
-                  <option value="">Any</option>
-                  <option value="Brandon T. Bestelmeyer">Bestelmeyer, Brandon</option>
-                  <option value="Stephanie Bestelmeyer">Bestelmeyer, Stephanie</option>
-                  <option value="Debra P. C. Peters">Peters, Debra</option>
-                  <option value="Osvaldo E. Sala">Sala, Osvaldo</option>
-               </select>
-            </div>
+         <div class="mt-1 form-group">
+            <label class="mr-2" for="q">Search term</label>
+            <input placeholder="Enter author or keyword" class="search-input" name="q" id="q" type="text">
          </div>
          <input type="hidden" id="sort" name="sort" value="date">
-         <div class="mt-3 form-group">
+         <div class="form-group">
             <label class="mr-2" for="itemType">Item Type</label>
             <select class="search-input" name="itemType" id="itemType">
                <option value="-attachment || note">Any</option>
@@ -106,6 +76,8 @@
       ZOTERO_CONFIG["limit"] = 25;
       ZOTERO_CONFIG["showPages"] = 9;
    </script>
+
+   <script async src="files/js/lter_bibliography/fill-authors.js"></script>
 
 </body>
 

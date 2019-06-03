@@ -1,19 +1,19 @@
 .loading {
-    width: 100px;
-    margin: auto;
+   width: 100px;
+   margin: auto;
 }
 
 .search-input {
-    width: 250px;
-    margin-bottom: 10px;
+   width: 250px;
+   margin-bottom: 10px;
 }
 
 .resultCount {
-    color: #808080;
+   color: #808080;
 }
 
 .result-query {
-    font-weight: bold;
+   font-weight: bold;
 }
 
 #searchResults {
@@ -21,19 +21,22 @@
 }
 
 .pagination {
-	margin: 16px 8px 16px 8px;
+   margin: 16px 8px 16px 8px;
 }
+
 .pagination a {
-	color: black;
-	padding: 8px 16px;
-	text-decoration: none;
+   color: black;
+   padding: 8px 16px;
+   text-decoration: none;
 }
+
 .pagination a.active {
-	background-color: #0d3760;
-	color: white;
+   background-color: #0d3760;
+   color: white;
 }
+
 .pagination a:hover:not(.active) {
-	background-color: #ddd;
+   background-color: #ddd;
 }
 
 /* collapsible */
@@ -45,27 +48,27 @@ input[type='checkbox'].collapse-toggle {
    cursor: pointer;
    transition: all 0.25s ease-out;
 }
- 
+
 .lbl-toggle::before {
    content: ' ';
    display: inline-block;
- 
+
    border-top: 5px solid transparent;
    border-bottom: 5px solid transparent;
    border-left: 5px solid currentColor;
- 
+
    vertical-align: middle;
    margin-right: .1rem;
    transform: translateY(-2px);
- 
+
    transition: transform .2s ease-out;
 }
 
-.collapse-toggle:checked + .lbl-toggle::before {
+.collapse-toggle:checked+.lbl-toggle::before {
    transform: rotate(90deg) translateX(-3px);
 }
- 
-.collapse-toggle:checked + .lbl-toggle {
+
+.collapse-toggle:checked+.lbl-toggle {
    border-bottom-right-radius: 0;
    border-bottom-left-radius: 0;
 }
@@ -86,4 +89,42 @@ input[type='checkbox'].collapse-toggle {
 .group-label {
    font-weight: bold;
    margin-left: 7px;
+}
+
+.autocomplete-suggestions {
+   text-align: left;
+   cursor: default;
+   border: 1px solid #ccc;
+   border-top: 0;
+   background: #fff;
+   box-shadow: -1px 1px 3px rgba(0, 0, 0, .1);
+
+   /* core styles should not be changed */
+   position: absolute;
+   display: none;
+   z-index: 9999;
+   max-height: 254px;
+   overflow: hidden;
+   overflow-y: auto;
+   box-sizing: border-box;
+}
+
+.autocomplete-suggestion {
+   position: relative;
+   padding: 0 .6em;
+   line-height: 23px;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   font-size: 1.02em;
+   color: #333;
+}
+
+.autocomplete-suggestion b {
+   font-weight: normal;
+   color: #1f8dd6;
+}
+
+.autocomplete-suggestion.selected {
+   background: #f0f0f0;
 }
