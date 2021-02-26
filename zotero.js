@@ -155,8 +155,13 @@ function parseZoteroResults(resultText) {
          var links = []
          for (var i = 0; i < dois.length; i++) {
             var doi = dois[i];
+            var j = i + 1
             if (doi.startsWith("https://doi.org/")) {
-               links.push(' <a href="' + doi + '" target="_blank" rel="noopener">Data link.</a>');
+               if (dois.length == 1) {
+
+               } else {
+               links.push(' <a href="' + doi + '" target="_blank" rel="noopener">Data link ' + j + '.</a>');
+            }
             }
          }
          return links.join(" ");
