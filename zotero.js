@@ -158,9 +158,9 @@ function parseZoteroResults(resultText) {
             var j = i + 1
             if (doi.startsWith("https://doi.org/")) {
                if (dois.length == 1) {
-                  links.push(' <a href="' + doi + '" target="_blank" rel="noopener">Data link.</a>');
+                  links.push(' <a href="' + doi + '" target="_blank" rel="noopener" aria-label="open data in new tab">Data link.</a>');
                } else {
-               links.push(' <a href="' + doi + '" target="_blank" rel="noopener">Data link ' + j + '.</a>');
+               links.push(' <a href="' + doi + '" target="_blank" rel="noopener" aria-label="open data in new tab">Data link ' + j + '.</a>');
             }
             }
          }
@@ -172,7 +172,7 @@ function parseZoteroResults(resultText) {
 
    function parseItemLink(url) {
       if (url)
-         return '<a href="' + url + '" target="_blank" rel="noopener">Item link.</a>';
+         return '<a href="' + url + '" target="_blank" rel="noopener" aria-label="open item in new tab">Item link.</a>';
       else
          return "";
    }
