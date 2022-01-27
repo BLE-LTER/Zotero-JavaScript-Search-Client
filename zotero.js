@@ -152,17 +152,24 @@ function parseZoteroResults(resultText) {
    function parseDataLinks(extra) {
       if (extra) {
          var dois = extra.split(/\r?\n/);
-         var links = []
+         var urls = [];
          for (var i = 0; i < dois.length; i++) {
             var doi = dois[i];
-            var j = i + 1
             if (doi.startsWith("https://doi.org/")) {
-               if (dois.length == 1) {
-                  links.push(' <a href="' + doi + '" target="_blank" rel="noopener" aria-label="open data in new tab">Data link.</a>');
-               } else {
-               links.push(' <a href="' + doi + '" target="_blank" rel="noopener" aria-label="open data in new tab">Data link ' + j + '.</a>');
+               urls.push(doi);
             }
-            }
+         }
+         var links = [];
+         if (urls.length == 0) {
+            return "";
+         } else if (urls.length == 1) {
+            links.push(' <a href="' + urls[0] + '" target="_blank" rel="noopener" aria-label="open data in new tab">Data link.</a>');
+         } else {
+            for (var i = 0; i < urls.length; i++) {
+               var url = urls[i];
+               var j = i + 1;
+               links.push(' <a href="' + url + '" target="_blank" rel="noopener" aria-label="open data in new tab">Data link ' + j + '.</a>');
+            }   
          }
          return links.join(" ");
       } else {
