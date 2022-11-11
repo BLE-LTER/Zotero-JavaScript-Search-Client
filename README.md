@@ -1,5 +1,7 @@
 # [Zotero-JavaScript-Search-Client](https://github.com/BLE-LTER/Zotero-JavaScript-Search-Client)
 
+[![DOI](https://zenodo.org/badge/101798279.svg)](https://zenodo.org/badge/latestdoi/101798279)
+
 Example HTML, CSS, and JavaScript for searching for items within a public Zotero
 user or group library
 
